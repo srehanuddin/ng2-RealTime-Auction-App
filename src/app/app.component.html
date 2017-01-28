@@ -7,6 +7,12 @@
             <h3>Menu</h3>
             <ul>
 
+                <li *ngIf="canShow(user, [userType.Admin, userType.User])">
+                    <a routerlinkactive="component-viewer-sidenav-item-selected" [routerLink]="['/ProductsAdd']" class="">
+                        Add Product For Auction
+                    </a>
+                </li>
+
                 <li *ngIf="canShow(user, [userType.Admin])">
                     <a routerlinkactive="component-viewer-sidenav-item-selected" [routerLink]="['/LocationAdd']" class="">
                         Add Parking Location
@@ -64,7 +70,7 @@
             <i class="material-icons app-toolbar-menu">menu</i>
         </button>
 
-        Real-Time Parking Booking System
+        I-REALTIME AUCTION
 
         <span class="example-spacer"></span>
         <span *ngIf="(user && user.uid)">Welcome {{(user && user.FirstName || "")}}</span>

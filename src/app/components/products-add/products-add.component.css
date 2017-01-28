@@ -1,0 +1,14 @@
+.fileControl {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    bottom: 0;
+    opacity: 0;
+}
+
+.FileProgressCont {
+    width: 100%;
+    float: left;
+    text-align: center
+}

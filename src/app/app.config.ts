@@ -2,10 +2,10 @@ import { AuthProviders, AuthMethods } from 'angularfire2';
 
 // Must export the config
 export const firebaseConfig = {
-  apiKey: 'AIzaSyBMHrwDMgM9Tz5E5KU4VigYhgyk4qCy43s',
-  authDomain: 'ng2realtimeparkingbooking.firebaseio.com',
-  databaseURL: 'https://ng2realtimeparkingbooking.firebaseio.com/',
-  storageBucket: '<your-storage-bucket>',
+  apiKey: 'AIzaSyDiVamh_kUGy87vua0-wIIiN4XJaVx53Fw',
+  authDomain: 'ng2-realtime-auction.firebaseio.com',
+  databaseURL: 'https://ng2-realtime-auction.firebaseio.com/',
+  storageBucket: 'gs://ng2-realtime-auction.appspot.com',
   messagingSenderId: '<your-messaging-sender-id>'
 };
 

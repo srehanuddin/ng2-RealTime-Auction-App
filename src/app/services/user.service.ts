@@ -89,7 +89,8 @@ export class UserService {
               Email : userObj.Email,
               AccountType : "Admin",
               FirstName : "Admin",
-              LastName : "Admin"
+              LastName : "Admin",
+              Location : "Karachi"
             }
             
             _self.UserFirebaseObservable.set(data);

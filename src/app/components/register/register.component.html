@@ -31,6 +31,11 @@
             <md-hint *ngIf="myForm.controls['Password'].touched && myForm.controls['Password'].hasError('required')" [ngStyle]="{'color': 'red'}" align="start">Required</md-hint>
           </md-input-container>
 
+          <md-input-container class="example-full-width">
+            <input md-input placeholder="Locaiton" [formControl]="myForm.controls['Locaiton']">
+            <md-hint *ngIf="myForm.controls['Locaiton'].touched && myForm.controls['Locaiton'].hasError('required')" [ngStyle]="{'color': 'red'}" align="start">Required</md-hint>
+          </md-input-container>
+
           <br>
           <br>
 

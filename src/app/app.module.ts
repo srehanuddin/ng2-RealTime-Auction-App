@@ -23,6 +23,7 @@ import { FeedbackService } from './services/feedback.service';
 import { LocationService } from './services/location.service';
 import { LoggedInGuardService } from './services/logged-in-guard.service';
 import { AccountsService } from './services/accounts.service';
+import { ProductsService } from './services/products.service';
 //import { ResumesService } from './services/resumes.service';
 import { LoginComponent } from './components/login/login.component';
 //import { CompaniesComponent } from './components/companies/companies.component';
@@ -38,12 +39,16 @@ import { LocationDetailComponent } from './components/location-detail/location-d
 import { BookingsComponent } from './components/bookings/bookings.component';
 import { FeedbackComponent } from './components/feedback/feedback.component';
 import { FeedbackSendComponent } from './components/feedback-send/feedback-send.component';
+import { ProductsComponent } from './components/products/products.component';
+import { ProductsAddComponent } from './components/products-add/products-add.component';
 
 export const appRoutes: Routes = [
   { path: '', component: HomeComponent, canActivate: [LoggedInGuardService] },
   { path: 'Home', component: HomeComponent, canActivate: [LoggedInGuardService]  },
   { path: 'Login', component: LoginComponent },
   { path: 'Register', component: RegisterComponent },
+
+  { path: 'ProductsAdd', component: ProductsAddComponent, data: {access : ["Admin", "User"]}, canActivate: [LoggedInGuardService]  },
 
   { path: 'LocationAdd', component: LocationAddComponent, data: {access : ["Admin"]}, canActivate: [LoggedInGuardService]  },
   { path: 'Locations', component: LocationsComponent, canActivate: [LoggedInGuardService]  },
@@ -81,7 +86,9 @@ export const appRoutes: Routes = [
     LocationDetailComponent,
     BookingsComponent,
     FeedbackComponent,
-    FeedbackSendComponent
+    FeedbackSendComponent,
+    ProductsComponent,
+    ProductsAddComponent
   ],
   imports: [
     BrowserModule,
@@ -98,7 +105,8 @@ export const appRoutes: Routes = [
     AccountsService,
     LoggedInGuardService,
     LocationService,
-    FeedbackService
+    FeedbackService,
+    ProductsService
   ],
   bootstrap: [AppComponent]
 })

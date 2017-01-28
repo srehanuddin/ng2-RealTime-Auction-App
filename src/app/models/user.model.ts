@@ -14,6 +14,7 @@ interface UserModel {
     FirstName : String,
     LastName : String,
     Email : String,
+    Location : String,
     AccountType : String
 }
 export default UserModel;
