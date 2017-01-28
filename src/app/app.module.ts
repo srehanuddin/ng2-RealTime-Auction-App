@@ -41,6 +41,7 @@ import { FeedbackComponent } from './components/feedback/feedback.component';
 import { FeedbackSendComponent } from './components/feedback-send/feedback-send.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ProductsAddComponent } from './components/products-add/products-add.component';
+import { ProductsDetailComponent } from './components/products-detail/products-detail.component';
 
 export const appRoutes: Routes = [
   { path: '', component: HomeComponent, canActivate: [LoggedInGuardService] },
@@ -49,6 +50,9 @@ export const appRoutes: Routes = [
   { path: 'Register', component: RegisterComponent },
 
   { path: 'ProductsAdd', component: ProductsAddComponent, data: {access : ["Admin", "User"]}, canActivate: [LoggedInGuardService]  },
+  { path: 'Products', component: ProductsComponent, data: {access : ["Admin", "User"]}, canActivate: [LoggedInGuardService]  },
+  { path: 'Products/:id', component: ProductsComponent, data: {access : ["Admin", "User"]}, canActivate: [LoggedInGuardService]  },
+  { path: 'ProductsDetail/:id', component: ProductsDetailComponent, data: {access : ["Admin", "User"]}, canActivate: [LoggedInGuardService]  },
 
   { path: 'LocationAdd', component: LocationAddComponent, data: {access : ["Admin"]}, canActivate: [LoggedInGuardService]  },
   { path: 'Locations', component: LocationsComponent, canActivate: [LoggedInGuardService]  },
@@ -88,7 +92,8 @@ export const appRoutes: Routes = [
     FeedbackComponent,
     FeedbackSendComponent,
     ProductsComponent,
-    ProductsAddComponent
+    ProductsAddComponent,
+    ProductsDetailComponent
   ],
   imports: [
     BrowserModule,

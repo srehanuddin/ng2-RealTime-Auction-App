@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { AccountsService } from './services/accounts.service';
 import { UserService } from './services/user.service';
 import UserModel, { UserType } from './models/user.model';
+import { Categories } from './models/product.model';
+
 
 @Component({
   selector: 'app-root',
@@ -15,6 +17,7 @@ export class AppComponent {
   title = 'app works!';
   user : UserModel;
   userType = UserType;
+  categories = Categories;
 
   constructor(
     private userService : UserService, 

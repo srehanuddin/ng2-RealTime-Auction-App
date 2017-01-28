@@ -1,0 +1,62 @@
+
+<md-card class="example-card" >
+  <md-card-content>
+    <h2>{{productDetail?.Title}} <span *ngIf="Status" >- {{Status}}</span></h2>
+    <p *ngIf="productDetail?.File">
+      <img src="{{productDetail?.File}}" style="width: 50%" />
+    </p>
+    <p>
+      Description : {{productDetail?.Description}}
+    </p>
+    <p>
+      Location : {{productDetail?.Location}}
+    </p>
+    <p >
+      Aution End Date : {{productDetail?.AutionEndDate}} {{productDetail?.AutionEndTime}} 
+    </p>
+
+    <p>Category : {{productDetail?.Category}} </p>
+    <p>BidStartingAmount : {{productDetail?.BidStartingAmount}} </p>
+    
+  </md-card-content>
+</md-card>
+
+<md-card class="example-card" >
+  <md-card-content>
+    <h2>Rehan<span>Bid : 500</span></h2>
+    <p>
+      Date : {{productDetail?.Description}}
+    </p>
+  </md-card-content>
+</md-card>
+
+<md-card class="example-card" >
+  <md-card-content>
+    <h2>Rehan<span>Bid : 500</span></h2>
+    <p>
+      Date : {{productDetail?.Description}}
+    </p>
+  </md-card-content>
+</md-card>
+
+<md-card class="example-card" >
+  <md-card-content>
+    <h2>Rehan<span>Bid : 500</span></h2>
+    <p>
+      Date : {{productDetail?.Description}}
+    </p>
+  </md-card-content>
+</md-card>
+
+<md-card class="example-card" >
+  <md-card-actions class="padding-bottom-10">
+          <md-input-container class="chatTextCont" *ngIf="!isFileUploading">
+            <input md-input placeholder="Enter Bid Amount'" [(ngModel)]="message" >
+          </md-input-container>
+          <span class="example-spacer"></span>
+          <div class="chatButtonsCont" >
+            <button md-button md-raised-button color="primary" type="button" (click)="sendMessage()">Submit Bid</button>
+          </div>
+          
+        </md-card-actions>
+</md-card>

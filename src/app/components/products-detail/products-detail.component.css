@@ -1,0 +1,10 @@
+.chatButtonsCont {
+    float: right; 
+    width: 200px; 
+    text-align: right;
+    margin-right: 20px;
+}
+
+.chatTextCont {
+    width: calc(100% - 220px);
+}

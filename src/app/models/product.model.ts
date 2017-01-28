@@ -18,4 +18,13 @@ interface ProductModel {
     MinimumBidAmount : Number,
     Category : String
 }
+export interface AuctionModel {
+    uid : String,
+    pid : String,
+    FirstName : String,
+    LastName : String,
+    Bid : Number,
+    TimeStamp : String,
+    DateTime : String
+}
 export default ProductModel;

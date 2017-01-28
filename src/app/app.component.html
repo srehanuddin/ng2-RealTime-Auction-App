@@ -13,6 +13,12 @@
                     </a>
                 </li>
 
+                <li *ngIf="canShow(user, [userType.Admin, userType.User])">
+                    <a routerlinkactive="component-viewer-sidenav-item-selected" [routerLink]="['/Products']" class="">
+                        View My Products
+                    </a>
+                </li>
+
                 <li *ngIf="canShow(user, [userType.Admin])">
                     <a routerlinkactive="component-viewer-sidenav-item-selected" [routerLink]="['/LocationAdd']" class="">
                         Add Parking Location
@@ -58,6 +64,15 @@
                     </a>
                 </li>
 
+            </ul>
+
+            <h3>Categories</h3>
+            <ul>
+                <li *ngFor="let c of categories">
+                    <a routerlinkactive="component-viewer-sidenav-item-selected" [routerLink]="['/Products', c]" class="">
+                        {{c}}
+                    </a>
+                </li>
             </ul>
         </nav>
 
