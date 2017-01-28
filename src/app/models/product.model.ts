@@ -16,7 +16,12 @@ interface ProductModel {
     AutionEndTimeStamp : Number,
     BidStartingAmount : Number,
     MinimumBidAmount : Number,
-    Category : String
+    Category : String,
+    Status : String,
+    AuctionAwardedToUID : String,
+    AuctionAwardedToFirstName : String,
+    AuctionAwardedToLastName : String,
+    AuctionAwardedToAmount : Number,
 }
 export interface AuctionModel {
     uid : String,
@@ -24,7 +29,7 @@ export interface AuctionModel {
     FirstName : String,
     LastName : String,
     Bid : Number,
-    TimeStamp : String,
+    TimeStamp : Number,
     DateTime : String
 }
 export default ProductModel;

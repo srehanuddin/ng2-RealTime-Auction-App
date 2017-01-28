@@ -63,27 +63,6 @@ export class ProductsComponent implements OnInit {
 
           console.log("data - products", data)
           this.productsArr = data;
-          /*var key = "";
-          if(this.id && Categories.indexOf(<any>this.id) != -1){
-            key = "Category";
-          } else if (this.id){
-            key = "uid";
-          }
-
-          if(key){
-            console.log(Categories);
-            console.log("key" , key);
-            let tmp = [];
-            for(var i = 0; i < data.length; i++){
-              console.log(data[i][key],this.id);
-              if(data[i][key] == this.id){
-                tmp.push(data[i]);
-              }
-            }
-            this.productsArr = tmp;
-          } else {
-            this.productsArr = data;
-          }*/
         })
       });
 

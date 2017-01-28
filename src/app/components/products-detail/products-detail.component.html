@@ -1,7 +1,7 @@
 
 <md-card class="example-card" >
   <md-card-content>
-    <h2>{{productDetail?.Title}} <span *ngIf="Status" >- {{Status}}</span></h2>
+    <h2>{{productDetail?.Title}} <span *ngIf="Status" >- {{productDetail?.Status}}</span></h2>
     <p *ngIf="productDetail?.File">
       <img src="{{productDetail?.File}}" style="width: 50%" />
     </p>
@@ -21,42 +21,41 @@
   </md-card-content>
 </md-card>
 
-<md-card class="example-card" >
+<md-card class="example-card" *ngIf="productDetail?.Status == 'Awarded'" >
   <md-card-content>
-    <h2>Rehan<span>Bid : 500</span></h2>
+    <h2>
+      Awarded To {{productDetail?.AuctionAwardedToFirstName}} {{productDetail?.AuctionAwardedToLastName}} 
+      <span class="bidAmount">{{productDetail?.AuctionAwardedToAmount}}</span>
+    </h2>
+  </md-card-content>
+</md-card>
+
+<md-card class="example-card" *ngIf="productDetail?.Status == 'Cancelled'" >
+  <md-card-content>
+    <h2>
+      Cancelled due to no bid 
+    </h2>
+  </md-card-content>
+</md-card>
+
+<md-card class="example-card" *ngFor="let auc of auctionsDetail" >
+  <md-card-content>
+    <h2>{{auc.FirstName}}<span class="bidAmount">Bid : {{auc.Bid}}</span></h2>
     <p>
-      Date : {{productDetail?.Description}}
+      Date : {{auc.DateTime && displayableDate(auc.DateTime) || "--"}}
     </p>
   </md-card-content>
 </md-card>
 
-<md-card class="example-card" >
-  <md-card-content>
-    <h2>Rehan<span>Bid : 500</span></h2>
-    <p>
-      Date : {{productDetail?.Description}}
-    </p>
-  </md-card-content>
-</md-card>
-
-<md-card class="example-card" >
-  <md-card-content>
-    <h2>Rehan<span>Bid : 500</span></h2>
-    <p>
-      Date : {{productDetail?.Description}}
-    </p>
-  </md-card-content>
-</md-card>
-
-<md-card class="example-card" >
+<md-card class="example-card" *ngIf="auctionNotCompleted" >
+  <p *ngIf="ErrorMessage" class="error-message">{{ErrorMessage}}</p>
   <md-card-actions class="padding-bottom-10">
           <md-input-container class="chatTextCont" *ngIf="!isFileUploading">
-            <input md-input placeholder="Enter Bid Amount'" [(ngModel)]="message" >
+            <input md-input placeholder="Enter Bid Amount" type="number" [(ngModel)]="bidAmount" >
           </md-input-container>
           <span class="example-spacer"></span>
           <div class="chatButtonsCont" >
-            <button md-button md-raised-button color="primary" type="button" (click)="sendMessage()">Submit Bid</button>
+            <button md-button md-raised-button color="primary" type="button" (click)="submitBid()">Submit Bid</button>
           </div>
-          
         </md-card-actions>
 </md-card>

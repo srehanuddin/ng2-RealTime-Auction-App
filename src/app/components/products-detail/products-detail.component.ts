@@ -23,6 +23,9 @@ export class ProductsDetailComponent implements OnInit {
   auctions : FirebaseListObservable<AuctionModel[]>;
   auctionsDetail : AuctionModel[];
   id : String;
+  auctionNotCompleted = false;
+  bidAmount : number = null;
+  ErrorMessage = "";
 
   constructor(
     private productsService : ProductsService,
@@ -52,15 +55,88 @@ export class ProductsDetailComponent implements OnInit {
       this.product.subscribe((data : ProductModel) => {
         console.log("productDetail : ", data)
         this.productDetail = data;
-      });
 
-      this.auctions.subscribe((data : AuctionModel[]) => {
-        console.log("auctionDetail : ", data)
-        this.auctionsDetail = data;
+        this.auctions.subscribe((data : AuctionModel[]) => {
+          console.log("auctionDetail : ", data)
+          this.auctionsDetail = data;
+
+          this.checkFn();
+
+        });
+
       });
 
     });
  
+  }
+
+  checkFn(){
+    let currentDate = new Date();
+    if(this.productDetail.Status == "Awarded" || this.productDetail.Status == "Cancelled"){
+      return;
+    }
+
+    let bidEndDate = new Date(<any>this.productDetail.AutionEndTimeStamp);
+    if(bidEndDate <= currentDate){
+
+      if(this.auctionsDetail && this.auctionsDetail.length){
+        let lastObj = this.auctionsDetail[this.auctionsDetail.length - 1];
+
+        var obj = {
+          Status : "Awarded",
+          AuctionAwardedToUID : lastObj.uid,
+          AuctionAwardedToFirstName : lastObj.FirstName,
+          AuctionAwardedToLastName : lastObj.LastName,
+          AuctionAwardedToAmount : lastObj.Bid,
+        }   
+        this.productsService.updateProduct(obj);   
+      } else {
+        this.productsService.updateProduct({ Status : "Cancelled" });
+      }
+    } else {
+      this.auctionNotCompleted = true;
+    }
+
+  }
+
+  displayableDate(dt){
+    let date = new Date(dt);
+    return date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes();
+  }
+
+  submitBid(){
+    if(!this.bidAmount){
+      this.ErrorMessage = "Please Enter Bid Amount";
+      return;
+    }
+    this.bidAmount = Number(this.bidAmount);
+    if(isNaN(this.bidAmount)){
+      this.ErrorMessage = "Please Enter Bid Amount in Number";
+      return;
+    }
+
+    let lastBid = this.productDetail.BidStartingAmount;
+    if(this.auctionsDetail && this.auctionsDetail.length){
+      lastBid = this.auctionsDetail[this.auctionsDetail.length - 1].Bid;
+    }
+
+    if(this.bidAmount <= lastBid){
+      this.ErrorMessage = "Bid amount should be greater then " + lastBid;
+      return;
+    }
+
+    let obj : AuctionModel = {
+      uid : this.user.uid,
+      pid : this.id,
+      FirstName : this.user.FirstName,
+      LastName : this.user.LastName,
+      Bid : this.bidAmount,
+      TimeStamp : Date.now(),
+      DateTime : (new Date()).toString()
+    }
+    this.productsService.addAuction(obj);
+    this.bidAmount = null;
+    this.ErrorMessage = "";
   }
 
   ngOnInit() {

@@ -79,13 +79,14 @@ export class ProductsAddComponent implements OnInit {
     value.LastName = this.user.LastName;
     value.AutionEndTimeStamp = endTime.getTime();
     value.MinimumBidAmount = value.BidStartingAmount;
+    value.Status = "In-Process";
     if(this.FileUrl){
       value.File = this.FileUrl;
     }
 
     console.log('you submitted value: ', value);
     this.productsService.addProduct(value);
-    //this.router.navigate(['/Home']);
+    this.router.navigate(['/Home']);
     return;
 
   }

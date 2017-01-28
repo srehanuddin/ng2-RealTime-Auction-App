@@ -67,12 +67,20 @@ export class ProductsService {
     });
   }
 
-  addProduct(job: ProductModel) {
-    this.products.push(job);
+  addProduct(obj: ProductModel) {
+    this.products.push(obj);
   }
 
   deleteProduct(key: string) {    
     this.products.remove(key); 
+  }
+
+  updateProduct(obj){
+    this.product.update(obj);
+  }
+
+  addAuction(obj: AuctionModel) {
+    this.auctions.push(obj);
   }
 
   /*addBooking(job: BookingModel) {

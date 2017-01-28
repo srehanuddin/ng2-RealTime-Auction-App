@@ -1,10 +1,15 @@
 .chatButtonsCont {
     float: right; 
-    width: 200px; 
+    width: 110px; 
     text-align: right;
     margin-right: 20px;
 }
 
 .chatTextCont {
-    width: calc(100% - 220px);
+    width: calc(100% - 160px);
+}
+
+.bidAmount {
+    float: right;
+    color: red;
 }
