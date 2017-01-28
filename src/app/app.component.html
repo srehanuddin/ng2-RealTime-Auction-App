@@ -19,51 +19,18 @@
                     </a>
                 </li>
 
-                <li *ngIf="canShow(user, [userType.Admin])">
-                    <a routerlinkactive="component-viewer-sidenav-item-selected" [routerLink]="['/LocationAdd']" class="">
-                        Add Parking Location
+                <li *ngIf="canShow(user, [userType.Admin, userType.User])">
+                    <a routerlinkactive="component-viewer-sidenav-item-selected" [routerLink]="['/MyAwardedBids']" class="">
+                        View My Awarded Bids
                     </a>
                 </li>
 
-                <li>
-                    <a routerlinkactive="component-viewer-sidenav-item-selected" [routerLink]="['/Locations']" class="">
-                        View Parking Locations
-                    </a>
-                </li>
-
-                <li *ngIf="canShow(user, [userType.Admin])">
+                <!--<li *ngIf="canShow(user, [userType.Admin])">
                     <a routerlinkactive="component-viewer-sidenav-item-selected"  [routerLink]="['/Users']" class="">
                         View All Users
                     </a>
-                </li>
-                <li *ngIf="canShow(user, [userType.Admin])">
-                    <a routerlinkactive="component-viewer-sidenav-item-selected"  [routerLink]="['/Bookings']" class="">
-                        View All Bookings
-                    </a>
-                </li>
-                <li *ngIf="canShow(user, [userType.User])">
-                    <a routerlinkactive="component-viewer-sidenav-item-selected"  [routerLink]="['/Bookings']" class="">
-                        View My Bookings
-                    </a>
-                </li>
-
-                <li *ngIf="canShow(user, [userType.Admin])">
-                    <a routerlinkactive="component-viewer-sidenav-item-selected"  [routerLink]="['/Feedback']" class="">
-                        Users Feedbacks
-                    </a>
-                </li>
-
-                <li *ngIf="canShow(user, [userType.User])">
-                    <a routerlinkactive="component-viewer-sidenav-item-selected"  [routerLink]="['/Feedback']" class="">
-                        My Feedbacks
-                    </a>
-                </li>
-                <li *ngIf="canShow(user, [userType.User])">
-                    <a routerlinkactive="component-viewer-sidenav-item-selected"  [routerLink]="['/FeedbackSend']" class="">
-                        Send Feedback
-                    </a>
-                </li>
-
+                </li>-->
+                
             </ul>
 
             <h3>Categories</h3>

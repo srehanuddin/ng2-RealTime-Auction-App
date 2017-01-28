@@ -125,6 +125,14 @@ export class ProductsDetailComponent implements OnInit {
       return;
     }
 
+    let currentDate = new Date();
+    let bidEndDate = new Date(<any>this.productDetail.AutionEndTimeStamp);
+    if(bidEndDate <= currentDate){
+      this.ErrorMessage = "Bid Closed";
+      this.checkFn();
+      return;
+    }
+
     let obj : AuctionModel = {
       uid : this.user.uid,
       pid : this.id,

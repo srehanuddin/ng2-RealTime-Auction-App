@@ -8,13 +8,12 @@ import UserModel, { UserType } from "../../models/user.model";
 import ProductModel, {Categories} from "../../models/product.model";
 import { UserService } from '../../services/user.service';
 
-
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css']
+  selector: 'app-my-awarded-bids',
+  templateUrl: './my-awarded-bids.component.html',
+  styleUrls: ['./my-awarded-bids.component.css']
 })
-export class ProductsComponent implements OnInit {
+export class MyAwardedBidsComponent implements OnInit {
 
   user : UserModel;
   products : FirebaseListObservable<ProductModel[]>;
@@ -43,19 +42,10 @@ export class ProductsComponent implements OnInit {
           return;
         }
 
-        if(this.id && Categories.indexOf(<any>this.id) != -1){
-          productsService.fetchProducts({
-            orderByChild: 'Category',
-            equalTo: this.id
-          });
-        } else if (this.id){
-          productsService.fetchProducts({
-            orderByChild: 'uid',
-            equalTo: this.id
-          });
-        } else {
-          productsService.fetchProducts({});
-        }
+        productsService.fetchProducts({
+          orderByChild: 'AuctionAwardedToUID',
+          equalTo: this.user.uid
+        });
         
         this.products = productsService.products;
 
