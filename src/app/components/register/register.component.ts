@@ -38,13 +38,6 @@ export class RegisterComponent implements OnInit {
     });
 
 
-
-    /*userService.UserObservable.subscribe(data => {
-      console.log("data from UserObservable", data);
-      if(data && data.uid){
-        this.router.navigate(['/Home']);
-      }
-    });*/
   }
 
   onSubmit(value: any): void {

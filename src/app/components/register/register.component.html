@@ -32,14 +32,14 @@
           </md-input-container>
 
           <md-input-container class="example-full-width">
-            <input md-input placeholder="Locaiton" [formControl]="myForm.controls['Locaiton']">
-            <md-hint *ngIf="myForm.controls['Locaiton'].touched && myForm.controls['Locaiton'].hasError('required')" [ngStyle]="{'color': 'red'}" align="start">Required</md-hint>
+            <input md-input placeholder="Location" [formControl]="myForm.controls['Location']">
+            <md-hint *ngIf="myForm.controls['Location'].touched && myForm.controls['Location'].hasError('required')" [ngStyle]="{'color': 'red'}" align="start">Required</md-hint>
           </md-input-container>
 
           <br>
           <br>
 
-          <md-select placeholder="Account Type" name="accountType" class="example-full-width" [formControl]="myForm.controls['AccountType']">
+          <md-select placeholder="Account Type" name="AccountType" class="example-full-width" [formControl]="myForm.controls['AccountType']">
             <md-option value="User" selected>User</md-option>
             <md-hint *ngIf="myForm.controls['AccountType'].touched && myForm.controls['AccountType'].hasError('required')" [ngStyle]="{'color': 'red'}" align="start">Required</md-hint>
           </md-select>

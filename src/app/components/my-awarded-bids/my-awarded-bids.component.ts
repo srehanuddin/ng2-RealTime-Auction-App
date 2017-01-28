@@ -65,10 +65,9 @@ export class MyAwardedBidsComponent implements OnInit {
   }
 
   canDelete(item : ProductModel){
-    if(item.Status == "Awarded" && item.Status == "Cancelled"){
+    if(item.Status == "Awarded" || item.Status == "Cancelled"){
       return false;
-    }
-    if(this.user.AccountType == "Admin"){
+    } else if(this.user.AccountType == "Admin"){
       return true;
     } else if(this.user.uid == item.uid){
       return true;
